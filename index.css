@@ -11,7 +11,7 @@ h1{
 
 .todo-box{
     width: 95%;
-    height: 200px;
+    height: auto;
     border: 1px solid black;
     margin: auto;
     border-radius: 10px;
@@ -32,9 +32,9 @@ h1{
     left: 10px;
 }
 .add-btn{
-    width: 30px;
+    width: 25px;
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 35px;
     display: block;
     background: white;
@@ -49,6 +49,8 @@ h1{
 }
 .task-actions{
     /* border: 1px solid black; */
+    margin: auto;
+    width: 95%;
     display: flex;
     position: relative;
     justify-content: space-between;
@@ -67,4 +69,14 @@ h1{
     right: 8%;
     top: 17px;
     font-size: large;
+}
+.task-status{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.stat{
+    display: flex;
+    gap: 10px;
 }
