@@ -1,3 +1,4 @@
+"use Strict";
 const addBtn = document.getElementById("add-btn");
 const inputTask= document.getElementById("task");
 const taskList = document.getElementById("taskList");
