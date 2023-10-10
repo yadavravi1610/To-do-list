@@ -31,11 +31,11 @@ h1{
     top: 10px;
     left: 10px;
 }
-.add-btn{
+#add-btn{
     width: 25px;
     position: absolute;
     top: 15px;
-    right: 35px;
+    right: 12%;
     display: block;
     background: white;
 }
@@ -64,7 +64,7 @@ h1{
 .complete-task img{
     height: 20px;
 }
-.clear-task{
+#clear-task{
     position: relative;
     right: 8%;
     top: 17px;
