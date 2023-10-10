@@ -4,8 +4,13 @@ const taskList = document.getElementById("taskList");
 const taskCounter = document.getElementById("counter");
 const completeAll = document.getElementById("complete-all");
 const clearCompleted = document.getElementById("clear-task");
+const completed = document.getElementById("completed");
+const unCompleted = document.getElementById("unCompleted");
+const showAll = document.getElementById("showAll"); 
 
 let tasks = [];
+let completedTasks = [];
+let unCompletedTasks = [];
 
 //function to show add button
 inputTask.addEventListener('focus', function(){
@@ -27,7 +32,7 @@ document.addEventListener('keydown', function(event){
 completeAll.addEventListener('click',function(){
     const complete = true;
     for(let i=0;i<tasks.length;i++){
-        tasks[i].completed= complete;
+        tasks[i].completed = complete;
     };
     renderList();
 })
@@ -85,13 +90,60 @@ function renderList(){
     }
 }
 
+
 function addTaskToDOM(task){
     const li= document.createElement('li');
     li.innerHTML= `<div>
-        <input id="${task.id}" type="checkbox" ${task.completed ? 'checked': ''}>
-    <span>${task.title}</span></div>
-    <img src="images/close.png" id="close">`;
-    // console.log(task.completed);
+    <label>
+        <input type="checkbox" ${task.completed ? 'checked': ''}>
+    <span>${task.title}</span>
+    </label></div>
+    <img src="images/close.png" class="close">`;
+
+    li.addEventListener('click', function(){
+        const image = this.querySelector("img");
+            image.style.display ="block";
+    })
+
     taskList.appendChild(li);
     inputTask.value = "";
 }
+
+showAll.addEventListener('click',function(){
+    renderList();
+})
+
+completed.addEventListener('click',function(){
+    for(let i=0;i<tasks.length;i++){
+        const filteredtask = tasks.filter(task =>task.completed);
+        completedTasks = filteredtask;
+        // console.log("completedTasks", completedTasks);
+        completedrenderList();
+    };
+})
+
+unCompleted.addEventListener('click', function(){
+    for(let i=0;i<tasks.length;i++)
+    {
+        const filteredtask = tasks.filter(task => !task.completed);
+        unCompletedTasks = filteredtask;
+        // console.log("unCompletedTasks", unCompletedTasks);
+        unCompletedrenderList();
+    }
+
+})
+function completedrenderList(){
+    taskList.innerHTML=" ";
+    for(let i=0;i<completedTasks.length;i++){
+        addTaskToDOM(completedTasks[i]);
+    }
+}
+
+function unCompletedrenderList(){
+    taskList.innerHTML=" ";
+    for(let i=0;i<unCompletedTasks.length;i++){
+        addTaskToDOM(unCompletedTasks[i]);
+    }
+}
+
+

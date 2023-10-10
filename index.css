@@ -88,16 +88,19 @@ h1{
 }
 ul{
     list-style-type: none;
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
 }
 ul li{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin: 10px 0px;
     font-size: larger;
 }
 ul li img{
     width: 20px;
     position: absolute;
     right: 30px;
+    display: none;
 }
