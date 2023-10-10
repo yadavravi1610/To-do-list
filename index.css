@@ -25,6 +25,7 @@ h1{
     position: relative;
     margin-left: 20px;
 }
+
 .list{
     width: 30px;
     position: absolute;
@@ -36,7 +37,7 @@ h1{
     position: absolute;
     top: 15px;
     right: 12%;
-    display: block;
+    display: none;
     background: white;
 }
 .input-box input{
@@ -82,8 +83,20 @@ h1{
 }
 #taskList{
     margin: auto;
-    width: 95%;
+    width: 80%;
 }
 ul{
     list-style-type: none;
+}
+ul li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: larger;
+}
+ul li img{
+    width: 20px;
+    position: absolute;
+    right: 30px;
 }
