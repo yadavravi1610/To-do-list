@@ -2,9 +2,10 @@ const addBtn = document.getElementById("add-btn");
 const inputTask= document.getElementById("task");
 const taskList = document.getElementById("taskList");
 const taskCounter = document.getElementById("counter");
-const completeAll = document.getElementById("complete-all")
+const completeAll = document.getElementById("complete-all");
+const clearCompleted = document.getElementById("clear-task");
 
-const tasks = [];
+let tasks = [];
 
 //function to show add button
 inputTask.addEventListener('focus', function(){
@@ -28,6 +29,13 @@ completeAll.addEventListener('click',function(){
     for(let i=0;i<tasks.length;i++){
         tasks[i].completed= complete;
     };
+    renderList();
+})
+
+//function to clear completed tasks
+clearCompleted.addEventListener('click', function(){
+   const filteredtask = tasks.filter(task => !task.completed);
+    tasks = filteredtask;
     renderList();
 })
 
@@ -59,7 +67,7 @@ function addTask(task){
     if(task)
     {
         tasks.push(task);
-        console.log(tasks);
+        // console.log(tasks);
         renderList();
         return;
     }
@@ -83,7 +91,7 @@ function addTaskToDOM(task){
         <input id="${task.id}" type="checkbox" ${task.completed ? 'checked': ''}>
     <span>${task.title}</span></div>
     <img src="images/close.png" id="close">`;
-    console.log(task.completed);
+    // console.log(task.completed);
     taskList.appendChild(li);
     inputTask.value = "";
 }

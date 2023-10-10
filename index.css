@@ -58,18 +58,19 @@ h1{
 }
 .complete-task{
     display: flex;
-    align-items: baseline;
     gap: 5px;
-    font-size: large;
+    font-size: small;
+    margin-left: 10%;
 }
 .complete-task img{
     height: 20px;
+    position: relative;
+    top: 20%;
 }
 #clear-task{
     position: relative;
-    right: 8%;
     top: 17px;
-    font-size: large;
+    font-size: small;
 }
 .task-status{
     width: 95%;
