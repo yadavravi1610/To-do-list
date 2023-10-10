@@ -12,7 +12,7 @@ let tasks = [];
 let completedTasks = [];
 let unCompletedTasks = [];
 
-//function to show add button
+//Eventlistener to show add button
 inputTask.addEventListener('focus', function(){
     addBtn.style.display = "block";
 })
@@ -28,7 +28,7 @@ document.addEventListener('keydown', function(event){
     }
 })
 
-//function to complete all tasks
+//Eventlistener to complete all tasks
 completeAll.addEventListener('click',function(){
     const complete = true;
     for(let i=0;i<tasks.length;i++){
@@ -37,14 +37,14 @@ completeAll.addEventListener('click',function(){
     renderList();
 })
 
-//function to clear completed tasks
+//Eventlistener to clear completed tasks
 clearCompleted.addEventListener('click', function(){
    const filteredtask = tasks.filter(task => !task.completed);
     tasks = filteredtask;
     renderList();
 })
 
-//Function to hide the add button
+//Eventlistener to hide the add button
 document.addEventListener('click', function(event){
     if(event.target !== inputTask){
         addBtn.style.display = "none";
@@ -77,7 +77,7 @@ function addTask(task){
         return;
     }
 }
-
+//function to render the list
 function renderList(){
     taskList.innerHTML=" ";
     let unCompletedTask= 0;
@@ -90,7 +90,7 @@ function renderList(){
     }
 }
 
-
+//function to show the rendered list on the user interface
 function addTaskToDOM(task){
     const li= document.createElement('li');
     li.innerHTML= `<div>
@@ -104,34 +104,35 @@ function addTaskToDOM(task){
         const image = this.querySelector("img");
             image.style.display ="block";
     })
-
     taskList.appendChild(li);
     inputTask.value = "";
 }
-
+//Eventlistener for the all button which show all the tasks
 showAll.addEventListener('click',function(){
     renderList();
 })
 
+//Eventlistener for rendering the completed tasks
 completed.addEventListener('click',function(){
     for(let i=0;i<tasks.length;i++){
         const filteredtask = tasks.filter(task =>task.completed);
         completedTasks = filteredtask;
-        // console.log("completedTasks", completedTasks);
         completedrenderList();
     };
 })
 
+//Eventlistener for rendering the uncompleted tasks
 unCompleted.addEventListener('click', function(){
     for(let i=0;i<tasks.length;i++)
     {
         const filteredtask = tasks.filter(task => !task.completed);
         unCompletedTasks = filteredtask;
-        // console.log("unCompletedTasks", unCompletedTasks);
         unCompletedrenderList();
     }
 
 })
+
+//function to render completed tasks
 function completedrenderList(){
     taskList.innerHTML=" ";
     for(let i=0;i<completedTasks.length;i++){
@@ -139,11 +140,11 @@ function completedrenderList(){
     }
 }
 
+//function to render uncompleted tasks
 function unCompletedrenderList(){
     taskList.innerHTML=" ";
     for(let i=0;i<unCompletedTasks.length;i++){
         addTaskToDOM(unCompletedTasks[i]);
     }
 }
-
 

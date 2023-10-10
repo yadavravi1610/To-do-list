@@ -17,15 +17,12 @@ h1{
     border-radius: 10px;
 }
 .input-box{
-    /* border: 1px solid black; */
-    width: 95%;
+    width: 85%;
     margin: auto;
     margin-top: 20px;
     height: 50px;
     position: relative;
-    margin-left: 20px;
 }
-
 .list{
     width: 30px;
     position: absolute;
@@ -36,7 +33,7 @@ h1{
     width: 25px;
     position: absolute;
     top: 15px;
-    right: 12%;
+    left: 92.5%;
     display: none;
     background: white;
 }
@@ -46,17 +43,18 @@ h1{
     padding-left: 55px;
     font-size: larger;
     height: 50px;
-    width: 75%;
+    width: 90%;
 }
 .task-actions{
     /* border: 1px solid black; */
     margin: auto;
-    width: 95%;
+    width: 92%;
     display: flex;
     position: relative;
     justify-content: space-between;
 }
 .complete-task{
+    cursor: pointer;
     display: flex;
     gap: 5px;
     font-size: small;
@@ -68,8 +66,9 @@ h1{
     top: 20%;
 }
 #clear-task{
+    cursor: pointer;
     position: relative;
-    top: 17px;
+    top: 15px;
     font-size: small;
 }
 .task-status{
@@ -104,3 +103,23 @@ ul li img{
     right: 30px;
     display: none;
 }
+.stat{
+    color: rgb(152, 152, 152);
+}
+#showAll{
+    cursor: pointer;
+}
+#completed{
+    cursor: pointer;
+}
+#unCompleted{
+    cursor: pointer;
+}
+
+
+
+/* @media screen and (max-width:600) {
+    .todo-box{
+        width: 50%;
+    }
+} */
