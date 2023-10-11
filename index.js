@@ -122,9 +122,7 @@ taskList.addEventListener("click", (e) => {
 taskList.addEventListener("click", (e) => {
     if (e.target.matches(".close")) {
         const taskId = e.target.id;
-        // console.log(taskId);
         const filteredTask = tasks.filter(task => task.id != taskId);
-        console.log(filteredTask);
         tasks = filteredTask;
         renderList();
     }
