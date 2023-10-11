@@ -10,7 +10,7 @@ const unCompleted = document.getElementById("unCompleted");
 const showAll = document.getElementById("showAll");
 
 
-let tasks = [] ;
+let tasks = [];
 let completedTasks = [];
 let unCompletedTasks = [];
 
@@ -70,13 +70,13 @@ function renderList() {
             unCompletedTask++;
         }
     }
-        removeActiveClassFromStatus();
-        showAll.classList.add("active");
-        taskCounter.textContent = unCompletedTask;
-    localStorage.setItem("tasks",JSON.stringify(tasks));
+    removeActiveClassFromStatus();
+    showAll.classList.add("active");
+    taskCounter.textContent = unCompletedTask;
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-function removeActiveClassFromStatus(){
+function removeActiveClassFromStatus() {
     showAll.classList.remove('active');
     completed.classList.remove('active');
     unCompleted.classList.remove('active');
@@ -108,23 +108,22 @@ function addTaskToDOM(task) {
     inputTask.value = "";
 }
 
-taskList.addEventListener("click",(e) =>{
+taskList.addEventListener("click", (e) => {
     // if(e.target.classList.contains())
     const taskId = e.target.id;
     // console.log(taskId);
     const task = tasks.find(task => task.id == taskId);
-    if(task){
-    task.completed = !task.completed;
-    renderList();
+    if (task) {
+        task.completed = !task.completed;
+        renderList();
     }
-} )
+})
 
-taskList.addEventListener("click",(e)=>{
-    if(e.target.matches(".close"))
-    {
+taskList.addEventListener("click", (e) => {
+    if (e.target.matches(".close")) {
         const taskId = e.target.id;
         // console.log(taskId);
-        const filteredTask = tasks.filter( task=> task.id != taskId );
+        const filteredTask = tasks.filter(task => task.id != taskId);
         console.log(filteredTask);
         tasks = filteredTask;
         renderList();
@@ -162,40 +161,22 @@ showAll.addEventListener('click', function () {
 
 //Eventlistener for rendering the completed tasks
 completed.addEventListener('click', function () {
-    for (let i = 0; i < tasks.length; i++) {
-        const filteredtask = tasks.filter(task => task.completed);
-        completedTasks = filteredtask;
-        completedrenderList();
-    };
+    taskList.innerHTML = " ";
+    const filteredtask = tasks.filter(task => task.completed);
+    for (let i = 0; i < filteredtask.length; i++) {
+        addTaskToDOM(filteredtask[i]);
+    }
+    removeActiveClassFromStatus();
+    completed.classList.add("active");
 })
 
 //Eventlistener for rendering the uncompleted tasks
 unCompleted.addEventListener('click', function () {
-    for (let i = 0; i < tasks.length; i++) {
-        const filteredtask = tasks.filter(task => !task.completed);
-        unCompletedTasks = filteredtask;
-        unCompletedrenderList();
-    }
-
-})
-
-//function to render completed tasks
-function completedrenderList() {
     taskList.innerHTML = " ";
-    for (let i = 0; i < completedTasks.length; i++) {
-        addTaskToDOM(completedTasks[i]);
-    }
-    removeActiveClassFromStatus();
-    completed.classList.add("active");
-}
-
-//function to render uncompleted tasks
-function unCompletedrenderList() {
-    taskList.innerHTML = " ";
-    for (let i = 0; i < unCompletedTasks.length; i++) {
-        addTaskToDOM(unCompletedTasks[i]);
+    const filteredtask = tasks.filter(task => !task.completed);
+    for (let i = 0; i < filteredtask.length; i++) {
+        addTaskToDOM(filteredtask[i]);
     }
     removeActiveClassFromStatus();
     unCompleted.classList.add("active");
-}
-
+})
