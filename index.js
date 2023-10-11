@@ -72,7 +72,7 @@ function renderList() {
         taskCounter.textContent = unCompletedTask;
 
     localStorage.setItem("tasks",JSON.stringify(tasks));
-    console.log(localStorage.getItem("tasks"));
+    // console.log(localStorage.getItem("tasks"));
 
 }
 
@@ -85,12 +85,18 @@ function addTaskToDOM(task) {
         <label for=${task.id}>
     <span id=${task.id}>${task.title}</span>
     </label>
-    </div>
-    <img id=${task.id} src="images/close.png" class="close">`;
+    
+    <img id=${task.id} src="images/close.png" class="close">
+    </div>`;
 
-    li.addEventListener('click', function () {
+    li.addEventListener('mouseover', function () {
         const image = this.querySelector("img");
         image.style.display = "block";
+    })
+
+    li.addEventListener('mouseout', function () {
+        const image = this.querySelector("img");
+        image.style.display = "none";
     })
     taskList.appendChild(li);
     inputTask.value = "";
@@ -106,6 +112,18 @@ taskList.addEventListener("click",(e) =>{
     renderList();
     }
 } )
+
+taskList.addEventListener("click",(e)=>{
+    if(e.target.matches(".close"))
+    {
+        const taskId = e.target.id;
+        // console.log(taskId);
+        const filteredTask = tasks.filter( task=> task.id != taskId );
+        console.log(filteredTask);
+        tasks = filteredTask;
+        renderList();
+    }
+})
 
 //Eventlistener to complete all tasks
 completeAll.addEventListener('click', function () {
@@ -130,9 +148,6 @@ document.addEventListener('click', function (event) {
         addBtn.style.display = "none";
     }
 })
-
-
-
 
 //Eventlistener for the all button which show all the tasks
 showAll.addEventListener('click', function () {

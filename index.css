@@ -100,7 +100,8 @@ ul li{
 ul li img{
     width: 20px;
     position: absolute;
-    right: 30px;
+    right: 10%;
+    margin-top: -22px;
     display: none;
 }
 .stat{
