@@ -116,6 +116,10 @@ ul li img{
 #unCompleted{
     cursor: pointer;
 }
+.active{
+    color: black;
+    text-decoration: underline;
+}
 
 
 

@@ -68,12 +68,18 @@ function renderList() {
         addTaskToDOM(tasks[i]);
         if (!tasks[i].completed) {
             unCompletedTask++;
-        }}
+        }
+    }
+        removeActiveClassFromStatus();
+        showAll.classList.add("active");
         taskCounter.textContent = unCompletedTask;
-
     localStorage.setItem("tasks",JSON.stringify(tasks));
-    // console.log(localStorage.getItem("tasks"));
+}
 
+function removeActiveClassFromStatus(){
+    showAll.classList.remove('active');
+    completed.classList.remove('active');
+    unCompleted.classList.remove('active');
 }
 
 //function to show the rendered list on the user interface
@@ -179,6 +185,8 @@ function completedrenderList() {
     for (let i = 0; i < completedTasks.length; i++) {
         addTaskToDOM(completedTasks[i]);
     }
+    removeActiveClassFromStatus();
+    completed.classList.add("active");
 }
 
 //function to render uncompleted tasks
@@ -187,5 +195,7 @@ function unCompletedrenderList() {
     for (let i = 0; i < unCompletedTasks.length; i++) {
         addTaskToDOM(unCompletedTasks[i]);
     }
+    removeActiveClassFromStatus();
+    unCompleted.classList.add("active");
 }
 
